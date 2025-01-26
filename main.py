@@ -120,7 +120,7 @@ def print_control_room_banner():
 def play_startup_sound():
     def play_sound():
         try:
-            winsound.PlaySound("iseeu.wav", winsound.SND_FILENAME)
+            winsound.PlaySound("./assets/iseeu.wav", winsound.SND_FILENAME)
         except:
             print("Failed to play startup sound")  # Continue silently if sound fails to play
             
