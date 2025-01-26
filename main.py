@@ -173,15 +173,25 @@ def view_recorded_data():
 
 def merge_recordings():
     data_dir = 'data'
+    
+    # Early validation of data directory
     if not os.path.exists(data_dir):
-        print("\nNo sessions found!")
+        print("\nNo sessions found - data directory does not exist!")
+        input("\nPress Enter to continue...")
         return
 
-    # List all session folders
-    sessions = [d for d in os.listdir(data_dir) if os.path.isdir(os.path.join(data_dir, d)) and d.startswith('session_')]
+    # List and validate session folders directly in data directory
+    try:
+        sessions = [d for d in os.listdir(data_dir) 
+                   if os.path.isdir(os.path.join(data_dir, d)) and d.startswith('session_')]
+    except Exception as e:
+        print(f"\nError listing sessions: {str(e)}")
+        input("\nPress Enter to continue...")
+        return
     
     if not sessions:
         print("\nNo session folders found!")
+        input("\nPress Enter to continue...")
         return
 
     print("\nAvailable sessions:")
@@ -192,11 +202,19 @@ def merge_recordings():
         choice = int(input("\nEnter session number to merge: "))
         if 1 <= choice <= len(sessions):
             session_folder = os.path.join(data_dir, sessions[choice-1])
+            
+            if not os.path.exists(session_folder):
+                print("\nError: Selected session folder no longer exists!")
+                input("\nPress Enter to continue...")
+                return
+                
             add_audio_to_video(session_folder)
         else:
             print("\nInvalid session number!")
     except ValueError:
         print("\nPlease enter a valid number!")
+    except Exception as e:
+        print(f"\nError during merge process: {str(e)}")
     
     input("\nPress Enter to continue...")
 
