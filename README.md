@@ -24,7 +24,7 @@ A powerful desktop surveillance suite that simultaneously captures:
 
 3. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/i-see-you.git
+   git clone https://github.com/arpitbhau/i-see-you.git
    cd i-see-you
    ```
 
