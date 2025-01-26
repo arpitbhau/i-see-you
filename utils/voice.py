@@ -89,4 +89,9 @@ def start_voice_recording(session_folder):
     record_thread.daemon = True  # Make thread daemon so it exits when main program exits
     record_thread.start()
     
-    return lambda: setattr(record_thread, 'recording', False)
+    def stop_recording():
+        nonlocal recording
+        recording = False
+        record_thread.join(timeout=5)  # Wait for thread to finish with timeout
+        
+    return stop_recording
