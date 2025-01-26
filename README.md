@@ -21,6 +21,8 @@ A powerful desktop surveillance suite that simultaneously captures:
 
 2. Install FFmpeg:
    - Windows: Download from [ffmpeg.org](https://ffmpeg.org/download.html)
+   - Linux: `sudo apt-get install ffmpeg`
+   - MacOS: `brew install ffmpeg`
 
 3. Clone the repository:
    ```bash
@@ -36,7 +38,12 @@ A powerful desktop surveillance suite that simultaneously captures:
 
 ## Usage
 
-1. Launch the program: `py main.py`
+1. Run the application:
+   - Windows: Double-click `start.bat` or run `py main.py`
+   - Linux/MacOS: Run `./start.sh` or `python main.py`
+
+
+
 <br>
 <img src="./assets/main-menu.png" alt="I See You Main Menu">
 
